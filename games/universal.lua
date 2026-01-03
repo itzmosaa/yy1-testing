@@ -15,7 +15,7 @@ end
 local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/wrealaero/NewAeroV4/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
+			return game:HttpGet('https://raw.githubusercontent.com/itzmosaa/krylon/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -566,12 +566,12 @@ run(function()
 	function whitelist:update(first)
 		local suc = pcall(function()
 			local _, subbed = pcall(function()
-				return game:HttpGet('https://github.com/wrealaero/whitelists')
+				return game:HttpGet('https://github.com/itzmosaa/krylon-whitelists')
 			end)
 			local commit = subbed:find('currentOid')
 			commit = commit and subbed:sub(commit + 13, commit + 52) or nil
 			commit = commit and #commit == 40 and commit or 'main'
-			whitelist.textdata = game:HttpGet('https://raw.githubusercontent.com/wrealaero/whitelists/'..commit..'/PlayerWhitelist.json', true)
+			whitelist.textdata = game:HttpGet('https://raw.githubusercontent.com/itzmosaa/krylon-whitelists/'..commit..'/PlayerWhitelist.json', true)
 		end)
 		if not suc or not hash or not whitelist.get then return true end
 		whitelist.loaded = true
